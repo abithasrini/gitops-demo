@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dotnet.qa
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: qa
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: dotnet
+    repoURL: 090963996862.dkr.ecr.us-east-1.amazonaws.com
+    targetRevision: 0.{__tag__}.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

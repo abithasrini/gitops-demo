@@ -1,0 +1,22 @@
+pool:
+  name: hedo
+
+resources:
+ repositories:
+   - repository: pipeline-template
+     type: git
+     name: hedo/pipeline-template
+   - repository: pipeline-template
+     type: git
+     name: hedo/hedo-dotnet
+ pipelines:  
+  - pipeline: cipipeline
+    source: 'hedo-dotnet-ci'
+    trigger:
+      enabled: true       
+      branches:
+      - dev
+      - release/*
+
+extends:   
+  template: azure-pipeline-stage-template-cd.yaml@pipeline-template

@@ -1,0 +1,13 @@
+trigger: none
+
+pool:
+  name: Default
+
+resources:
+ repositories:
+   - repository: pipeline-template
+     type: git
+     name: hedo/pipeline-template
+
+extends:   
+  template: azure-pipeline-stage-template.yaml@pipeline-template

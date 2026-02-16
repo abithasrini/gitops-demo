@@ -1,0 +1,5 @@
+namespace:
+  name: {__namespace__}
+
+deployment:
+  imagetag: {__env__}-{__tag__}
